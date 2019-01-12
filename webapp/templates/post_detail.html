@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Публикация{% endblock %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.text }}</p>
+    <p>Автор: {{ post.author }}</p>
+    <hr>
+    {% if post.author == request.user %}
+        <a href="{% url "webapp:post_update" post.pk %}" class="btn-dark">Изменить публикацию</a>
+        <a href="{% url "webapp:post_delete" post.pk %}" class="btn-danger">Удалить публикацию</a>
+    {% endif %}
+    <hr>
+
+{% endblock %}

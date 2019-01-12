@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Пользователи{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1>:</h1>
+    {% for userinfo in userinfo_list %}
+    <h2><a href="{% url 'webapp:user_detail' userinfo.pk %}">{{ userinfo.user }}</a></h2>
+    {% endfor %}
+{% endblock %}

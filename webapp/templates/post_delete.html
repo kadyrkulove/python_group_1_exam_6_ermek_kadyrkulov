@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить публикацию{% endblock %}
+
+{% block content %}
+    <h1>Удалить публикацию</h1>
+    <h5>Вы уверены, что хотите удалить публикацию "{{ post.title }}"?</h5>
+    <form action="{% url 'webapp:post_delete' post.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+{% endblock %}

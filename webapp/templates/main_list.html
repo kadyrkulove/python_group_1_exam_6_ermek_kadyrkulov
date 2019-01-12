@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}XAKIpress{% endblock %}
+
+{% block content %}
+    <h1>Лента:</h1>
+        {% for post in post_list %}
+        <h1><a href="{% url 'webapp:post_detail' post.pk %}">{{ post.title }}</a> Автор: {{ post.author }}, Дата публикации: {{ post.date }} </h1>
+        <hr>
+    {% endfor %}
+{% endblock %}

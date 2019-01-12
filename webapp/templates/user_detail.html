@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+    <h3>{{ userinfo.user }}</h3>
+    <p>Телефон:<a href="#" id="phone_link">Показать телефон</a><span id="phone_number">{{ userinfo.phone }}</span></p>
+    <a href="{% url 'webapp:user_update' userinfo.pk %}" class="nav-link">Редактировать</a>
+    <hr>
+
+    <h4>Друзья:</h4>
+    {% for friend in userinfo.friends.all %}
+        <p><a href="{% url 'webapp:user_detail' friend.pk %}">{{ friend }}</a></p>
+    {% endfor %}
+
+    <h4>Публикации:</h4>
+    {% for post in posts.all %}
+        <p><a href="{% url 'webapp:post_detail' post.pk %}">{{ post.title }}</a></p>
+    {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#phone_number").hide();
+            $("#phone_link").click(function () {
+                $("#phone_link").hide();
+                $("#phone_number").show();
+            });
+        });
+    </script>
+
+{% endblock %}
